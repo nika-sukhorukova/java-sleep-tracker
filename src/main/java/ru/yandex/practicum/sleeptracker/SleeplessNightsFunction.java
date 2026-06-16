@@ -24,8 +24,8 @@ public class SleeplessNightsFunction implements Function<List<SleepingSession>, 
                 .map(SleepStatistics::nightDate)
                 .collect(Collectors.toSet());
 
-        LocalDateTime firstStart = data.get(0).getStart();
-        LocalDateTime lastEnd = data.get(data.size() - 1).getEnd();
+        LocalDateTime firstStart = data.getFirst().getStart();
+        LocalDateTime lastEnd = data.getLast().getEnd();
 
         LocalDate firstNight = firstStart.toLocalTime().isBefore(NOON)
                 ? firstStart.toLocalDate()
