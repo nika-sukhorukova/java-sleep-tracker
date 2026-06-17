@@ -11,12 +11,13 @@ import java.util.stream.Collectors;
 
 public class SleeplessNightsFunction implements Function<List<SleepingSession>, SleepAnalysisResult<Long>> {
 
+    private static final String DESCRIPTION = "Бессонных ночей";
     private static final LocalTime NOON = LocalTime.NOON;
 
     @Override
     public SleepAnalysisResult<Long> apply(List<SleepingSession> data) {
         if (data.isEmpty()) {
-            return new SleepAnalysisResult<>("Бессонных ночей", 0L);
+            return new SleepAnalysisResult<>(DESCRIPTION, 0L);
         }
 
         Set<LocalDate> sleptNights = data.stream()
@@ -35,6 +36,6 @@ public class SleeplessNightsFunction implements Function<List<SleepingSession>, 
         long totalNights = ChronoUnit.DAYS.between(firstNight, lastNight) + 1;
         long sleeplessNights = Math.max(0, totalNights - sleptNights.size());
 
-        return new SleepAnalysisResult<>("Бессонных ночей", sleeplessNights);
+        return new SleepAnalysisResult<>(DESCRIPTION, sleeplessNights);
     }
 }

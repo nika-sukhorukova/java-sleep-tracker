@@ -5,8 +5,10 @@ import java.util.function.Function;
 
 public class SessionCountFunction implements Function<List<SleepingSession>, SleepAnalysisResult<Integer>> {
 
+    private static final String DESCRIPTION = "Всего сессий сна";
+
     @Override
     public SleepAnalysisResult<Integer> apply(List<SleepingSession> data) {
-        return new SleepAnalysisResult<>("Всего сессий сна", data.size());
+        return new SleepAnalysisResult<>(DESCRIPTION, data.size());
     }
 }

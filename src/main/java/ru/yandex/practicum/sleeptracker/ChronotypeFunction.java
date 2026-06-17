@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class ChronotypeFunction implements Function<List<SleepingSession>, SleepAnalysisResult<Chronotype>> {
 
+    private static final String DESCRIPTION = "Хронотип пользователя";
     private static final LocalTime OWL_BEDTIME = LocalTime.of(23, 0);
     private static final LocalTime OWL_WAKEUP = LocalTime.of(9, 0);
     private static final LocalTime LARK_BEDTIME = LocalTime.of(22, 0);
@@ -33,7 +34,7 @@ public class ChronotypeFunction implements Function<List<SleepingSession>, Sleep
             result = Chronotype.DOVE;
         }
 
-        return new SleepAnalysisResult<>("Хронотип пользователя", result);
+        return new SleepAnalysisResult<>(DESCRIPTION, result);
     }
 
     private Chronotype classify(SleepingSession session) {
